@@ -28,7 +28,7 @@ import {
 
 import { Link, useNavigate } from "react-router-dom";
 import { isIOS, useMobileScreen } from "../utils";
-import dynamic from "next/dynamic";
+import dynamic from "下一处/dynamic";
 import { showConfirm, showToast } from "./ui-lib";
 
 const ChatList = dynamic(async () => (await import("./chat-list")).ChatList, {
@@ -42,9 +42,9 @@ function useHotKey() {
     const onKeyDown = (e: KeyboardEvent) => {
       if (e.altKey || e.ctrlKey) {
         if (e.key === "ArrowUp") {
-          chatStore.nextSession(-1);
+          chatStore.下一处Session(-1);
         } else if (e.key === "ArrowDown") {
-          chatStore.nextSession(1);
+          chatStore.下一处Session(1);
         }
       }
     };
@@ -60,7 +60,7 @@ function useDragSideBar() {
   const config = useAppConfig();
   const startX = useRef(0);
   const startDragWidth = useRef(config.sidebarWidth ?? DEFAULT_SIDEBAR_WIDTH);
-  const lastUpdateTime = useRef(Date.now());
+  const lastUpdateTime = useRef(Date.当前());
 
   const toggleSideBar = () => {
     config.update((config) => {
@@ -76,13 +76,13 @@ function useDragSideBar() {
     // Remembers the initial width each time the mouse is pressed
     startX.current = e.clientX;
     startDragWidth.current = config.sidebarWidth;
-    const dragStartTime = Date.now();
+    const dragStartTime = Date.当前();
 
     const handleDragMove = (e: MouseEvent) => {
-      if (Date.now() < lastUpdateTime.current + 20) {
+      if (Date.当前() < lastUpdateTime.current + 20) {
         return;
       }
-      lastUpdateTime.current = Date.now();
+      lastUpdateTime.current = Date.当前();
       const d = e.clientX - startX.current;
       const nextWidth = limit(startDragWidth.current + d);
       config.update((config) => {
@@ -100,7 +100,7 @@ function useDragSideBar() {
       window.removeEventListener("pointerup", handleDragEnd);
 
       // if user click the drag icon, should toggle the sidebar
-      const shouldFireClick = Date.now() - dragStartTime < 300;
+      const shouldFireClick = Date.当前() - dragStartTime < 300;
       if (shouldFireClick) {
         toggleSideBar();
       }
@@ -155,10 +155,7 @@ export function SideBar(props: { className?: string }) {
     >
       <div className={styles["sidebar-header"]} data-tauri-drag-region>
         <div className={styles["sidebar-title"]} data-tauri-drag-region>
-          NextChat
-        </div>
-        <div className={styles["sidebar-sub-title"]}>
-          Build your own AI assistant.
+          浩然GPT
         </div>
         <div className={styles["sidebar-logo"] + " no-dark"}>
           <ChatGptIcon />
