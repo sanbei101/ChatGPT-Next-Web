@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   description: "永远更新最强大的ai模型!",
   appleWebApp: {
     title: "HaoRan-Ai",
-    statusBarStyle: "永远更新最强大的ai模型!",
+    statusBarStyle: "default",
   },
 };
 
